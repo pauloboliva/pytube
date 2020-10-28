@@ -35,7 +35,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "pytube"
+project = "pytube3"
 copyright = "2019, Nick Ficano"  # noqa: A001
 author = "Nick Ficano, Harold Martin"
 
@@ -107,7 +107,7 @@ html_sidebars = {
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "pytubedoc"
+htmlhelp_basename = "pytube3doc"
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -119,8 +119,8 @@ latex_elements = {}
 latex_documents = [
     (
         master_doc,
-        "pytube.tex",
-        "pytube Documentation",
+        "pytube3.tex",
+        "pytube3 Documentation",
         "Nick Ficano",
         "manual",
     ),
@@ -131,7 +131,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, "pytube", "pytube Documentation", [author], 1,),
+    (master_doc, "pytube3", "pytube3 Documentation", [author], 1,),
 ]
 
 # -- Options for Texinfo output -------------------------------------------
@@ -142,10 +142,10 @@ man_pages = [
 texinfo_documents = [
     (
         master_doc,
-        "pytube",
-        "pytube Documentation",
+        "pytube3",
+        "pytube3 Documentation",
         author,
-        "pytube",
+        "pytube3",
         "One line description of project.",
         "Miscellaneous",
     ),

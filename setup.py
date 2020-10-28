@@ -15,17 +15,15 @@ with open(os.path.join(here, "pytube", "version.py")) as fp:
     exec(fp.read())
 
 setup(
-    name="pytube",
+    name="pytube3",
     version=__version__,  # noqa: F821
     author="Nick Ficano, Harold Martin",
     author_email="nficano@gmail.com, harold.martin@gmail.com",
     packages=["pytube", "pytube.contrib"],
     package_data={"": ["LICENSE"],},
-    url="https://github.com/nficano/pytube",
+    url="https://github.com/hbmartin/pytube3",
     license="MIT",
-    entry_points={
-        "console_scripts": [
-            "pytube = pytube.cli:main", "pytube3 = pytube.cli:main"],},
+    entry_points={"console_scripts": ["pytube3 = pytube.cli:main",],},
     install_requires=["typing_extensions"],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
@@ -54,8 +52,8 @@ setup(
     zip_safe=True,
     python_requires=">=3.6",
     project_urls={
-        "Bug Reports": "https://github.com/nficano/pytube/issues",
-        "Read the Docs": "https://python-pytube.readthedocs.io/en/latest",
+        "Bug Reports": "https://github.com/hbmartin/pytube3/issues",
+        "Read the Docs": "https://pytube3.readthedocs.io/en/latest/?badge=latest",
     },
     keywords=["youtube", "download", "video", "stream",],
 )

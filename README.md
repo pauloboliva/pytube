@@ -1,5 +1,5 @@
 
-##  (24 JULY 2020) Note: Actively soliciting contributers!
+#  (24 JULY 2020) Note: Actively soliciting contributers!
 Ping @ronncc if you would like to help out 
 
 <div align="center">

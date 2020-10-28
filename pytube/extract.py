@@ -24,7 +24,6 @@ logger = logging.getLogger(__name__)
 
 def is_age_restricted(watch_html: str) -> bool:
     """Check if content is age restricted.
-
     :param str watch_html:
         The html contents of the watch page.
     :rtype: bool
@@ -40,13 +39,10 @@ def is_age_restricted(watch_html: str) -> bool:
 
 def video_id(url: str) -> str:
     """Extract the ``video_id`` from a YouTube url.
-
     This function supports the following patterns:
-
     - :samp:`https://youtube.com/watch?v={video_id}`
     - :samp:`https://youtube.com/embed/{video_id}`
     - :samp:`https://youtu.be/{video_id}`
-
     :param str url:
         A YouTube url containing a video id.
     :rtype: str
@@ -58,7 +54,6 @@ def video_id(url: str) -> str:
 
 def video_info_url(video_id: str, watch_url: str) -> str:
     """Construct the video_info url.
-
     :param str video_id:
         A YouTube video identifier.
     :param str watch_url:
@@ -82,7 +77,6 @@ def video_info_url(video_id: str, watch_url: str) -> str:
 
 def video_info_url_age_restricted(video_id: str, embed_html: str) -> str:
     """Construct the video_info url.
-
     :param str video_id:
         A YouTube video identifier.
     :param str embed_html:
@@ -111,10 +105,8 @@ def _video_info_url(params: OrderedDict) -> str:
 
 def js_url(html: str) -> str:
     """Get the base JavaScript url.
-
     Construct the base JavaScript url, which contains the decipher
     "transforms".
-
     :param str html:
         The html contents of the watch page.
     """
@@ -124,21 +116,16 @@ def js_url(html: str) -> str:
 
 def mime_type_codec(mime_type_codec: str) -> Tuple[str, List[str]]:
     """Parse the type data.
-
     Breaks up the data in the ``type`` key of the manifest, which contains the
     mime type and codecs serialized together, and splits them into separate
     elements.
-
     **Example**:
-
     mime_type_codec('audio/webm; codecs="opus"') -> ('audio/webm', ['opus'])
-
     :param str mime_type_codec:
         String containing mime type and codecs.
     :rtype: tuple
     :returns:
         The mime type and a list of codecs.
-
     """
     pattern = r"(\w+\/\w+)\;\scodecs=\"([a-zA-Z-0-9.,\s]*)\""
     regex = re.compile(pattern)
@@ -151,7 +138,6 @@ def mime_type_codec(mime_type_codec: str) -> Tuple[str, List[str]]:
 
 def get_ytplayer_js(html: str) -> Any:
     """Get the YouTube player base JavaScript path.
-
     :param str html
         The html contents of the watch page.
     :rtype: str
@@ -176,11 +162,9 @@ def get_ytplayer_js(html: str) -> Any:
 
 def get_ytplayer_config(html: str) -> Any:
     """Get the YouTube player configuration data from the watch html.
-
     Extract the ``ytplayer_config``, which is json data embedded within the
     watch html and serves as the primary source of obtaining the stream
     manifest data.
-
     :param str html:
         The html contents of the watch page.
     :rtype: str
@@ -209,7 +193,6 @@ def get_ytplayer_config(html: str) -> Any:
 
 def apply_signature(config_args: Dict, fmt: str, js: str) -> None:
     """Apply the decrypted signature to the stream manifest.
-
     :param dict config_args:
         Details of the media streams available.
     :param str fmt:
@@ -218,7 +201,6 @@ def apply_signature(config_args: Dict, fmt: str, js: str) -> None:
         ``adaptive_fmts``).
     :param str js:
         The contents of the base.js asset file.
-
     """
     cipher = Cipher(js=js)
     stream_manifest = config_args[fmt]
@@ -255,23 +237,18 @@ def apply_signature(config_args: Dict, fmt: str, js: str) -> None:
 
 def apply_descrambler(stream_data: Dict, key: str) -> None:
     """Apply various in-place transforms to YouTube's media stream data.
-
     Creates a ``list`` of dictionaries by string splitting on commas, then
     taking each list item, parsing it as a query string, converting it to a
     ``dict`` and unquoting the value.
-
     :param dict stream_data:
         Dictionary containing query string encoded values.
     :param str key:
         Name of the key in dictionary.
-
     **Example**:
-
     >>> d = {'foo': 'bar=1&var=test,em=5&t=url%20encoded'}
     >>> apply_descrambler(d, 'foo')
     >>> print(d)
     {'foo': [{'bar': '1', 'var': 'test'}, {'em': '5', 't': 'url encoded'}]}
-
     """
     otf_type = "FORMAT_STREAM_TYPE_OTF"
 

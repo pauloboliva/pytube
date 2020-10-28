@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import os
 from unittest import mock
 
 import pytest
@@ -62,7 +61,7 @@ def test_cache():
 @mock.patch("os.getcwd", return_value="/cwd")
 @mock.patch("os.makedirs")
 def test_target_directory_with_relative_path(_, __, makedirs):  # noqa: PT019
-    assert target_directory("test") == os.path.join("/cwd", "test")
+    assert target_directory("test") == "/cwd/test"
     makedirs.assert_called()
 
 

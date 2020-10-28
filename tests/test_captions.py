@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import os
 from unittest import mock
 from unittest.mock import MagicMock
 from unittest.mock import mock_open
@@ -72,7 +71,7 @@ def test_download(srt):
         )
         caption.download("title")
         assert (
-            open_mock.call_args_list[0][0][0].split(os.path.sep)[-1] == "title (en).srt"
+            open_mock.call_args_list[0][0][0].split("/")[-1] == "title (en).srt"
         )
 
 
@@ -90,7 +89,7 @@ def test_download_with_prefix(srt):
         )
         caption.download("title", filename_prefix="1 ")
         assert (
-            open_mock.call_args_list[0][0][0].split(os.path.sep)[-1]
+            open_mock.call_args_list[0][0][0].split("/")[-1]
             == "1 title (en).srt"
         )
 
@@ -109,7 +108,7 @@ def test_download_with_output_path(srt):
             }
         )
         file_path = caption.download("title", output_path="blah")
-        assert file_path == os.path.join("/target","title (en).srt")
+        assert file_path == "/target/title (en).srt"
         captions.target_directory.assert_called_with("blah")
 
 
@@ -127,7 +126,7 @@ def test_download_xml_and_trim_extension(xml):
         )
         caption.download("title.xml", srt=False)
         assert (
-            open_mock.call_args_list[0][0][0].split(os.path.sep)[-1] == "title (en).xml"
+            open_mock.call_args_list[0][0][0].split("/")[-1] == "title (en).xml"
         )
 
 
